@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovation OS</title>
+  <style>
+    /* Desktop background */
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+
+      background-repeat: no-repeat;
+        background-color: #00101a;
+    }
+        .background-image-1 {
+            background-image: url('https://media-hosting.imagekit.io/5242b576bffb4e42/Adobe%20Express%20-%20file.png?Expires=1840048940&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=pTU7XWYHsqVijNuGpPIh~2KFWptK2XuoaS7E8x7n1dVOqyENeepG8wMQJlzVAjAaTog5VLuPEZeU3aBvApHQf3uehbru9KxC9NvZZUnsQCc4uC4hfjWxsh0MpGVs9vp~uhk51UsvMUtJB1poGEuewKBdpfYRdUPkvH9zGDfC77zTvKc2X1s4wzVnTWJynwgJMhe-VDMTVPQ7cHUxSX8gADPk8wmRbJMUoLJER64vk~fCp2~CYvjOmwfzWAps11z2RHpoyRJPn47~ATxhF7XAq0K6DTA9D4qw0D-cb6enKIw6SXwaRVahLMxWtzZ7r-sDEciiaFHfqNY7-ESOrQOnDQ__');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Make the background cover the entire viewport height */
+            width: 100vw; /* Make the background cover the entire viewport width */
+        }
+
+        .background-image-2 {
+            background-image: url('https://media-hosting.imagekit.io/884749b0deee4a68/Untitled%20design.png?Expires=1840473650&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=fBHSJIlr0E-Sr9rPsEGfnx61S91DjB0VjYfrq0CHOjDi3cC6l6IMY8xiiyMHydj-8QgbFfn1byxf39S1WYXuwNitVEhVDUDmSf7P4yD5gTOY3hhcQK8wbvI6UOMxUTbzgrdkr00klCzbd0F~SnwG6H6ciV6l5YbcHA7mtF8mKWDmIx2zGqXirieiauCT01nFhdHmBtu5Jcvk7e8c6hmfetQzBAN9fZt1iRCSSBAV7rnrJOvwFJudYiG1Y0DE0s42y7GaSNy5XPOoZR-aLOLOji-mhpLx-CbPLtP7cJQCcJbq4HsNCGgT~66Yo5EdW17vW1xAfk-0NVm6xpKTALM3SA__');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100vw;
+        }
+      
+      
+    .desktop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor:cell;
+    }
+
+    /* Taskbar styling */
+    .taskbar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #34495e;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      box-sizing: border-box;
+      z-index: 100;
+    }
+    .taskbar-apps button {
+      margin-right: 10px;
+      background: #1abc9c;
+      border: none;
+      color: #fff;
+      padding: 5px 10px 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .taskbar-apps button:hover {
+      background: #16a085;
+    }
+    #clock {
+      margin-left: auto;
+      margin-right: 10px;
+      color: white;
+      font-size: 16px;
+      font-family: sans-serif;
+    }
+    .window {
+      position: absolute;
+      width: 400px;
+      height: 300px;
+      background: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+    .window-header {
+      background: #3498db;
+      padding: 5px 10px;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+    .window-header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0 5px;
+      margin-left: 5px;
+    }
+    .close-button {
+      background: red;
+      border: none;
+      color: #fff;
+      padding: 0 5px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .maximize-button {
+      background: green;
+      border: none;
+      color: #fff;
+      padding: 0 5px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-right: 5px;
+    }
+    .maximize-button:hover {
+      background: darkgreen;
+    }
+    .window-body {
+      padding: 10px;
+      height: calc(100% - 30px);
+      overflow: auto;
+    }
+      
+    h5 {
+      margin-right: 10px;
+      background: #1a84bc;
+      border: none;
+      color: #fff;
+      padding: 5px 10px 5px 10px;
+      border-radius: 3px;
+      cursor:text;
+      }  
+    .easter-egg {
+      margin-right: 0px;
+      background: #1a84bc;
+      border: none;
+      color: #fff;
+      padding: 0px 0px 0px 0px;
+      cursor:pointer;
+    }
+
+      
+      
+  </style>
+    <script>
+        function setRandomBackgroundImage() {
+            const body = document.body;
+            const randomNumber = Math.random();
+
+            if (randomNumber < 0.5) {
+                body.classList.add('background-image-1');
+                body.classList.remove('background-image-2');
+            } else {
+                body.classList.add('background-image-2');
+                body.classList.remove('background-image-1');
+            }
+        }
+
+        window.onload = setRandomBackgroundImage;
+    </script>    
+    
+        <!-- Google Analytics & FPS Counter Script -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZ803GFYKZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZ803GFYKZ');
+</script>
+<div id="fpsCounter" class="fps-counter"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const fpsCounter = document.createElement('div');
+    fpsCounter.id = 'fpsCounter';
+    document.body.appendChild(fpsCounter);
+
+    Object.assign(fpsCounter.style, {
+      position: 'fixed',
+      top: '10px',
+      left: '10px',
+      zIndex: '99999',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      color: '#00b5ff',
+      padding: '5px 10px',
+      borderRadius: '5px',
+      fontFamily: "'Courier New', monospace",
+      fontSize: '14px',
+      pointerEvents: 'none',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
+    });
+
+    let frameCount = 0;
+    let fps = 0;
+    let lastTime = performance.now();
+
+    function calculateFPS() {
+      frameCount++;
+      const currentTime = performance.now();
+
+      if (currentTime - lastTime >= 100) {
+        fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+        lastTime = currentTime;
+        frameCount = 0;
+        fpsCounter.textContent = `FPS: ${fps}`;
+      }
+      setTimeout(calculateFPS, 0);
+    }
+    calculateFPS();
+  });
+</script>
+
+    
+</head>
+<body>
+  <div class="desktop"></div>
+    
+  <div class="taskbar">
+      <h5>In<button class="easter-egg" title="Easter Egg" onclick="openEasterEgg()"><i>n</i></button>ovation OS Apps➜</h5>
+      
+<div class="taskbar-apps">  
+<span>
+ <button onclick="openBrowser()">
+  <img src="https://media-hosting.imagekit.io/ba82bef7b98a4bd8/Airbrush-Image-Enhancer__2_-removebg-preview.png?Expires=1837799362&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=bv6scbV4I2J8WZ4Z-L5Z51~QAUsjhAkNg5SUXLGIzYv2~WEfp5G5gnQ73KpquLvPxsPomGJAssh1xD4x01sC-5O5EAP-FTCuR9Gs4V7yKHXLllOySpIPYL4O5zE8Fyiu6TkC3DLPezFMCCGIjDQ8mbpfGvA3dHwiu~kJnq1n-CsHHsPZgWP2c5opChOtuGhDJCqthfickFL7bt9Uvr2tCfuoEbgckqiLwlCJ1r1Y5lfyTBkC~HbOCSfefedepICqZvpEO2SAasVo54-7MPBC0ukhtG75i2TM6WvFNaRnegPUnchBDFImN~qRHLtteAtLJX0LebL5vXRAtgqBFmbscQ__" height="24" width="24"/>
+ </button>
+</span>      
+
+      
+<span>
+ <button onclick="openSettings()">
+  <img src="https://media-hosting.imagekit.io/56e37d25ceb54323/Settings-removebg-preview.png?Expires=1840820858&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=l1OTSjPaZw6q14lie9hRYSOFRoeLa8Knw68wn6dm1WbwvQZyw2ubynmWhBgAYwBMdeyPgvrY-Kq7rqI2mzif1oBTBdJCcvPJ43qGzc6PJAAcWu2A~fdD7n8vjASFMyPMYnOKXfeoqRqjTwlhzC~1K2hqN~lr6QJ2NDPnX5rlHEcLxtHZoSOOPXPaOvHBbfiZg-LKnnVLZBDLEBaH-f7FmI9JqferXy6OYexomooW8hT1D5N-00Twf5F~0kJOlZc4gJTOSojIj87Mruep5nubc3CDfe155IGs7WUutUkzSy-RghzTy0vCsGiIGxMwBRSdeu8GDB6SlsIM29MGRE~ewA__" height="24" width="24"/>
+ </button>
+</span>      
+      
+      
+<span>
+ <button onclick="openCompiler()">
+  <img src="https://media-hosting.imagekit.io/96c10802f2164c18/Screenshot_2025-05-02_210425-removebg-preview.png?Expires=1840846634&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wNOwbsoOjxxrIbzZDDX9RVV8fpe6XI3paWwToUGJpwzYgAUKocxpb7Lnj7cxv0DWe06JGbJ78b2~DRp4bKrZqmyfTpyCQ4FVLDwcKWa2F6RFGu7H6AaE8ffMm4VePfVo8Up9eo1XfWdUptdZIqjeSMYY9RzrydzuTdH~TJ76Z-WU9dUwN9xhDQ3Emq9wqhHl68y8dznTWZVSr7b-qw5hGYTD1eqkakqcNxJM9DHTdOSvFB4y480YjOMz1AJtXiA~tSEO2cryJEw1LJA2hBONkZBeepFiDrhvacBcZj~tM8hWAUY3r4dIduVTHj-8apZuibiQV84PX6aE1s1DN7rCoA__" height="24" width="24"/>
+ </button>
+</span> 
+      </div>
+
+      
+      <button style=" margin-right: 10px; background: #1a84bc; border: none; color: #fff; padding: 2px 10px 2px 10px; border-radius: 3px; cursor:pointer;" onclick='openAboutBlank()'>➕ Open <strong>Innovation OS</strong> in an about:blank page.<br>(Recommended for enhanced privacy and security.)</button>
+      
+      
+      
+
+
+      
+<script>
+  function openAboutBlank() {
+  var win = window.open()
+  var url = window.location.href
+  var iframe = win.document.createElement('iframe')
+  iframe.style.position = "fixed"
+  iframe.style.width = "100%"
+  iframe.style.height = "100%"
+  iframe.style.border = "none"
+  iframe.style.top = "0"
+  iframe.style.bottom = "0"
+  iframe.style.left = "0"
+  iframe.style.right = "0"
+  iframe.style.margin = "0"
+  iframe.style.padding = "0"
+  iframe.style.overflow = "hidden"
+  iframe.src = url
+  win.document.body.appendChild(iframe)
+}
+</script>
+    <div id="clock">8:10:45</div>
+    <script>
+        
+setInterval(showTime, 1);
+function showTime() {
+    let time = new Date();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+    let ms = time.getMilliseconds();
+    am_pm = "AM";
+
+    // Setting time for 12 Hrs format
+    if (hour >= 12) {
+        if (hour > 12) hour -= 12;
+        am_pm = "PM";
+    } else if (hour == 0) {
+        hr = 12;
+        am_pm = "AM";
+    }
+
+    hour =
+        hour < 10 ? "0" + hour : hour;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+    ms = ms < 10 ? "0" + ms : ms;
+
+    let currentTime =
+        hour +
+        " : " +
+        min +
+        " : " +
+        sec +
+        " . " +
+        ms +
+        " " +
+        am_pm;
+
+    // Displaying the time
+    document.getElementById(
+        "clock"
+    ).innerHTML = currentTime;
+}
+
+showTime();
+
+    </script>
+
+  </div>
+
+  <script>
+    let zIndexCounter = 10;
+
+
+    // Create a window
+    function createWindow(title, contentHTML) {
+      const win = document.createElement('div');
+      win.className = 'window';
+      win.style.top = '50px';
+      win.style.left = '50px';
+      win.style.zIndex = ++zIndexCounter;
+
+      const header = document.createElement('div');
+      header.className = 'window-header';
+
+      const titleSpan = document.createElement('span');
+      titleSpan.textContent = title;
+      header.appendChild(titleSpan);
+
+      const maximizeButton = document.createElement('button');
+      maximizeButton.className = 'maximize-button';
+      maximizeButton.textContent = '☐';
+      maximizeButton.onclick = () => toggleFullscreen(win);
+      header.appendChild(maximizeButton);
+
+      const closeButton = document.createElement('button');
+      closeButton.className = 'close-button';
+      closeButton.textContent = '❌';
+      closeButton.onclick = () => win.remove();
+      header.appendChild(closeButton);
+
+      win.appendChild(header);
+
+      const bodyContainer = document.createElement('div');
+      bodyContainer.className = 'window-body';
+      bodyContainer.innerHTML = contentHTML;
+      win.appendChild(bodyContainer);
+
+      enableDragging(header, win);
+
+      document.querySelector('.desktop').appendChild(win);
+    }
+
+    function openBrowser() {
+      const browserContent = `<iframe src="https://www.tynker.com/code/view/67c8d54243c50d33b10713ca/" style="width:100%; height:100%; border:none;"></iframe>`;
+      createWindow('Innovation Web Explorer', browserContent);
+    }
+      
+    function openSettings() {
+      const settingsContent = `<iframe src="https://www.tynker.com/code/view/6813f778de7e395af366d542/" style="width:100%; height:100%; border:none;"></iframe>`;
+      createWindow('Innovation OS Settings', settingsContent);
+    }      
+      
+    function openCompiler() {
+      const compilerContent = `<iframe src="https://www.tynker.com/code/view/681573f419469907cf7535fd/" style="width:100%; height:100%; border:none;"></iframe>`;
+      createWindow('Innovation HTML Compiler', compilerContent);
+    }      
+    function openEasterEgg() {
+      const easterEggContent = `<iframe src="https://www.tynker.com/code/view/681e0e1f25e27b2dc53a8d2e/" style="width:100%; height:100%; border:none;"></iframe>`;
+      createWindow('Secrect Easter Egg Window', easterEggContent);
+    }
+    // Enable dragging
+    function enableDragging(header, windowElement) {
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      header.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        const rect = windowElement.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        windowElement.style.zIndex = ++zIndexCounter;
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          windowElement.style.left = `${e.clientX - offsetX}px`;
+          windowElement.style.top = `${e.clientY - offsetY}px`;
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        enforceBoundaries(windowElement);
+      });
+    }
+
+    // Toggle fullscreen
+    function toggleFullscreen(windowElement) {
+      const isFullscreen = windowElement.dataset.fullscreen === 'true';
+      if (!isFullscreen) {
+        windowElement.style.top = '0';
+        windowElement.style.left = '0';
+        windowElement.style.width = '100%';
+        windowElement.style.height = '100%';
+        windowElement.dataset.fullscreen = 'true';
+      } else {
+        windowElement.style.top = '50px';
+        windowElement.style.left = '50px';
+        windowElement.style.width = '400px';
+        windowElement.style.height = '300px';
+        windowElement.dataset.fullscreen = 'false';
+      }
+    }
+
+    // Prevent overflow
+    function enforceBoundaries(windowElement) {
+      const rect = windowElement.getBoundingClientRect();
+      const desktopRect = document.querySelector('.desktop').getBoundingClientRect();
+
+      if (rect.left < desktopRect.left) {
+        windowElement.style.left = `${desktopRect.left}px`;
+      }
+      if (rect.top < desktopRect.top) {
+        windowElement.style.top = `${desktopRect.top}px`;
+      }
+      if (rect.right > desktopRect.right) {
+        windowElement.style.left = `${desktopRect.right - rect.width}px`;
+      }
+      if (rect.bottom > desktopRect.bottom) {
+        windowElement.style.top = `${desktopRect.bottom - rect.height}px`;
+      }
+    }
+  </script>
+</body>
+</html>
