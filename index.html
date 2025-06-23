@@ -277,11 +277,30 @@
   win.document.body.appendChild(iframe)
 }
 </script>
-    <span>
- <button onclick="openCompiler()">
-  <img src="Innovation HTML Compiler.png" height="24" width="24"/>
- </button>
-</span> 
+<button onclick="systemOff()">Off</button>
+<button onclick="systemRestart()">Restart</button>
+
+<script>
+function systemOff() {
+  let text;
+  if (confirm("Press OK to Shut Down and close OS.") == true) {
+    location.href = "about:blank";
+  } 
+  
+  document.getElementById("demo").innerHTML = text;
+}
+
+function systemRestart() {
+  let text;
+  if (confirm("Press OK to Restart and reopen OS.") == true) {
+    location.href = "https://innovation-software-technologies.github.io/innovation-os";
+  } 
+  
+  document.getElementById("demo").innerHTML = text;
+}
+
+</script>
+
     <div id="clock">8:10:45</div>
     <script>
         
