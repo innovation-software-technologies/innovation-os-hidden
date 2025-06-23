@@ -76,6 +76,18 @@
       font-size: 16px;
       font-family: sans-serif;
     }
+        .power button {
+      margin-right: 10px;
+      background: #1abc9c;
+      border: none;
+      color: #fff;
+      padding: 5px 10px 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .power button:hover {
+      background: #16a085;
+    }
     .window {
       position: absolute;
       width: 400px;
@@ -277,6 +289,7 @@
   win.document.body.appendChild(iframe)
 }
 </script>
+    <div class="power">
 <button onclick="systemOff()">Off</button>
 <button onclick="systemRestart()">Restart</button>
 
@@ -300,7 +313,7 @@ function systemRestart() {
 }
 
 </script>
-
+  </div>
     <div id="clock">8:10:45</div>
     <script>
         
